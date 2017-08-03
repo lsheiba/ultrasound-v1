@@ -6,7 +6,7 @@ spec:
   packages:
     - names:
       {{- range $i, $value := .packages }}
-      - {{ $value }}
+      - "{{ $value }}"
       {{- end }}
       manager: "pip{{.python_version}}"
   tasks:
