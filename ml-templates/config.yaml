@@ -277,4 +277,5 @@ spec:
     isTrainLogDir: false
     mountPath: /code
     name: code
+    subPath: code
     clusterStorage: {{ .storage }}
