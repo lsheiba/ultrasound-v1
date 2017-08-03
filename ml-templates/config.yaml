@@ -159,7 +159,7 @@ spec:
       replicas: 1
       restartPolicy: Never
       maxRestartCount: 0
-      allowFail: false
+      allowFail: true
       {{- if eq .python_version "3" }}
       images:
         gpu: "tensorflow/tensorflow:{{.tensorflow_version}}-gpu-py3"
