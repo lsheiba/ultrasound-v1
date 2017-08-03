@@ -6,4 +6,5 @@ tensorflow_version: 1.2.0
 python_version: "2"
 serving_port: 9000
 tf_serving: false
-packages: []
+packages:
+ - "git+https://github.com/kuberlab/python-mlboardclient.git"
