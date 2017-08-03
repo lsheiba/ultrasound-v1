@@ -58,6 +58,7 @@ spec:
       - name: training
       - name: src
       - name: data
+      - name: code
   - name: parallel
     resources:
     - name: worker
@@ -94,6 +95,7 @@ spec:
       - name: training
       - name: src
       - name: data
+      - name: code
     - name: ps
       replicas: 1
       restartPolicy: Never
@@ -114,6 +116,7 @@ spec:
       port: 2222
       volumes:
       - name: src
+      - name: code
   - name: export
     resources:
     - name: worker
@@ -149,6 +152,7 @@ spec:
       - name: training
       - name: src
       - name: data
+      - name: code
   uix:
   - name: jupyter
     displayName: Jupyter
@@ -183,6 +187,8 @@ spec:
       mountPath: /notebooks/training
     - name: data
       mountPath: /notebooks/data
+    - name: code
+      mountPath: /notebooks
   - name: tensorboard
     displayName: Tensorboard
     command: "tensorboard"
@@ -240,6 +246,7 @@ spec:
     - name: data
     - name: src
     - name: lib
+    - name: code
   volumes:
   - isLibDir: false
     isTrainLogDir: true
@@ -266,3 +273,8 @@ spec:
     name: data
     clusterStorage: {{ .storage }}
     subPath: {{ .data_path }}
+  - isLibDir: false
+    isTrainLogDir: false
+    mountPath: /code
+    name: code
+    clusterStorage: {{ .storage }}
