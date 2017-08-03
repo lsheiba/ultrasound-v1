@@ -32,7 +32,7 @@ def main():
         started = task.start()
         
         LOG.info(
-            "Run & wait [name=%s, build=%s, status=%]"
+            "Run & wait [name=%s, build=%s, status=%s]"
             % (started.name, started.build, started.status)
         )
         completed = started.wait()
