@@ -1,0 +1,8 @@
+storage: default
+src: https://github.com/kuberlab-catalog/tensorflow
+src_path: /tensorflow/src
+data_path: data
+tensorflow_version: 1.2.0
+python_version: 2
+serving_port: 9000
+tf_serving: false
