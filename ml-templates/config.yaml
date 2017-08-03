@@ -153,6 +153,42 @@ spec:
       - name: src
       - name: data
       - name: code
+  - name: workflow
+    resources:
+    - name: tasks
+      replicas: 1
+      restartPolicy: Never
+      maxRestartCount: 0
+      allowFail: false
+      {{- if eq .python_version "3" }}
+      images:
+        gpu: "tensorflow/tensorflow:{{.tensorflow_version}}-gpu-py3"
+        cpu: "tensorflow/tensorflow:{{.tensorflow_version}}-py3"
+      {{- end }}
+      {{- if eq .python_version "2" }}
+      images:
+        gpu: "tensorflow/tensorflow:{{.tensorflow_version}}-gpu"
+        cpu: "tensorflow/tensorflow:{{.tensorflow_version}}"
+      {{- end }}
+      command: python
+      args: run_tasks.py
+      workdir: "$SRC_DIR"
+      resources:
+        accelerators:
+          gpu: 0
+          dedicated_gpu: true
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
+      volumes:
+      - name: lib
+      - name: training
+      - name: src
+      - name: data
+      - name: code
   uix:
   - name: jupyter
     displayName: Jupyter
