@@ -19,7 +19,7 @@ spec:
       allowFail: true
       images:
         cpu: busybox
-      command: echo "Uploading Data";echo "Done!!!"
+      command: "echo \"Uploading Data\";echo \"Done!!!\""
       workdir: "$DATA_DIR"
       volumes:
       - name: data
@@ -75,7 +75,7 @@ spec:
         gpu: "tensorflow/tensorflow:{{.tensorflow_version}}-gpu"
         cpu: "tensorflow/tensorflow:{{.tensorflow_version}}"
       {{- end }}
-      command: echo "WORKER: $REPLICA_INDEX";echo "PSS: $PS_NODES"; echo "WORKERS: $WORKER_NODES"; echo "BUILD: $BUILD_ID"; python
+      command: "echo \"WORKER: $REPLICA_INDEX\";echo \"PSS: $PS_NODES\"; echo \"WORKERS: $WORKER_NODES\"; echo \"BUILD: $BUILD_ID\"; python"
       args: hello.py
       workdir: "$SRC_DIR"
       resources:
@@ -108,7 +108,7 @@ spec:
         gpu: "tensorflow/tensorflow:{{.tensorflow_version}}-gpu"
         cpu: "tensorflow/tensorflow:{{.tensorflow_version}}"
       {{- end }}
-      command: echo "PS: $REPLICA_INDEX";echo "PSS: $PS_NODES"; echo "WORKERS: $WORKER_NODES"; echo "BUILD: $BUILD_ID"; python
+      command: "echo \"PS: $REPLICA_INDEX\";echo \"PSS: $PS_NODES\"; echo \"WORKERS: $WORKER_NODES\"; echo \"BUILD: $BUILD_ID\"; python"
       args: hello.py
       workdir: "$SRC_DIR"
       port: 2222
@@ -131,7 +131,7 @@ spec:
         gpu: "tensorflow/tensorflow:{{.tensorflow_version}}-gpu"
         cpu: "tensorflow/tensorflow:{{.tensorflow_version}}"
       {{- end }}
-      command: echo "BUILD: $BUILD_ID"; python
+      command: "echo \"BUILD: $BUILD_ID\"; python"
       args: hello.py
       workdir: "$SRC_DIR"
       resources:
