@@ -1,6 +1,6 @@
 kind: MLApp
 metadata:
-  name: gan-image-similarity
+  name: tensorflow
 spec:
   package_manager: "pip{{.python_version}}"
   packages:
