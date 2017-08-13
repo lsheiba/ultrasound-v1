@@ -1,6 +1,6 @@
 kind: MLApp
 metadata:
-  name: tensorflow
+  name: ultrasound-nerve-segmentation
 spec:
   package_manager: "pip{{.python_version}}"
   packages:
@@ -10,7 +10,7 @@ spec:
       {{- end }}
       manager: "pip{{.python_version}}"
   tasks:
-  - name: prepare-data
+  - name: prepare-data-1
     resources:
     - name: upload
       replicas: 1
@@ -23,7 +23,7 @@ spec:
       workdir: "$DATA_DIR"
       volumes:
       - name: data
-  - name: prepare-data-python
+  - name: prepare-data-2
     resources:
     - name: tasks
       replicas: 1
@@ -41,8 +41,8 @@ spec:
         cpu: "tensorflow/tensorflow:{{.tensorflow_version}}"
       {{- end }}
       command: python
-      args: run_tasks.py
-      workdir: "$SRC_DIR"
+      args: $SRC_DIR/data.py
+      workdir: "$DATA_DIR"
       resources:
         accelerators:
           gpu: 0
@@ -350,10 +350,4 @@ spec:
     mountPath: /code
     name: code
     subPath: code
-    clusterStorage: {{ .storage }}
-  - name: work
-    isLibDir: false
-    isTrainLogDir: false
-    mountPath: /work
-    subPath: work
     clusterStorage: {{ .storage }}
