@@ -11,6 +11,6 @@ Keywords:
 Maintainers:
 - Email: lsheiba@kuberlab.com
   Name: Leonard Sheiba
-Name: tensorflow
+Name: ultrasound-v1
 Version: 1.0.0
 Type: mlapp-v2
