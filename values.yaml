@@ -1,6 +1,6 @@
 storage: default
-src: https://github.com/kuberlab-catalog/tensorflow
-src_path: /tensorflow/src
+src: https://github.com/lsheiba/tfmodel-v1
+src_path: /tfmodel-v1/src
 data_path: data
 tensorflow_version: 1.2.0
 python_version: "2"
