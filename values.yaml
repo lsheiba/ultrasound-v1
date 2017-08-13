@@ -1,6 +1,6 @@
 storage: default
-src: https://github.com/lsheiba/tfmodel-v1
-src_path: /tfmodel-v1/src
+src: https://github.com/lsheiba/ultrasound-v1
+src_path: /ultrasound-v1/src
 data_path: data
 tensorflow_version: 1.2.0
 python_version: "2"
