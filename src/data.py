@@ -5,7 +5,7 @@ import numpy as np
 
 import cv2
 
-data_path = '../data/'
+data_path = './'
 
 image_rows = 420
 image_cols = 580
