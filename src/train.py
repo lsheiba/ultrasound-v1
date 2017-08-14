@@ -9,7 +9,7 @@ from keras.optimizers import *
 from keras.constraints import maxnorm
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as K
-from keras.utils.visualize_util import plot
+from keras.utils.vis_utils import plot_model
 from ImageDataGenerator import ImageDataGenerator
 
 from data import load_train_data, load_test_data
@@ -121,7 +121,7 @@ def train_and_predict():
     print('Creating and compiling model...')
     print('-'*30)
     model = get_unet()
-    plot(model, to_file='model.png', show_shapes=True)
+    plot_model(model, to_file='model.png', show_shapes=True)
     model_checkpoint = ModelCheckpoint('unet.hdf5', monitor='loss', save_best_only=True)
 
     print('-'*30)
