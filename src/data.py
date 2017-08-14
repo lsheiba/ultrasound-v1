@@ -5,14 +5,25 @@ import numpy as np
 
 import cv2
 
-data_path = './'
+#data_path = './'
 
 image_rows = 420
 image_cols = 580
 
+data_dir = os.environ['DATA_DIR'] + '/'
+imgs_train_file_name = 'imgs_train.npy'
+imgs_mask_train_file_name = 'imgs_mask_train.npy'
+imgs_test_file_name = 'imgs_test.npy'
+imgs_id_file_name = 'imgs_id_test.npy'
+imgs_train_file_path = data_dir + 'imgs_train.npy'
+imgs_mask_train_file_path = data_dir + 'imgs_mask_train.npy'
+imgs_test_file_path = data_dir + 'imgs_test.npy'
+imgs_id_file_path = data_dir + 'imgs_id_test.npy'
+
 
 def create_train_data():
-    train_data_path = os.path.join(data_path, 'train')
+    data_dir = data_dir = os.environ['DATA_DIR'] + '/'
+    train_data_path = os.path.join(data_dir, 'train')
     images = os.listdir(train_data_path)
     total = len(images) / 2
 
@@ -41,19 +52,26 @@ def create_train_data():
         i += 1
     print('Loading done.')
 
-    np.save('imgs_train.npy', imgs)
-    np.save('imgs_mask_train.npy', imgs_mask)
+    imgs_train_file_path = data_dir + 'imgs_train.npy'
+    imgs_mask_train_file_path = data_dir + 'imgs_mask_train.npy'
+
+    np.save(imgs_train_file_path', imgs)
+    np.save(imgs_mask_train_file_path, imgs_mask)
     print('Saving to .npy files done.')
 
 
 def load_train_data():
-    imgs_train = np.load('imgs_train.npy')
-    imgs_mask_train = np.load('imgs_mask_train.npy')
+    data_dir = data_dir = os.environ['DATA_DIR'] + '/'
+    imgs_train_file_name = 'imgs_train.npy'
+    imgs_mask_train_file_name = 'imgs_mask_train.npy'
+    imgs_train = np.load(imgs_train_file_path)
+    imgs_mask_train = np.load(imgs_mask_train_file_path)
     return imgs_train, imgs_mask_train
 
 
 def create_test_data():
-    train_data_path = os.path.join(data_path, 'test')
+    data_dir = data_dir = os.environ['DATA_DIR'] + '/'
+    train_data_path = os.path.join(data_dir, 'test')
     images = os.listdir(train_data_path)
     total = len(images)
 
@@ -78,14 +96,20 @@ def create_test_data():
         i += 1
     print('Loading done.')
 
-    np.save('imgs_test.npy', imgs)
-    np.save('imgs_id_test.npy', imgs_id)
+    imgs_test_file_path = data_dir + 'imgs_test.npy'
+    imgs_id__test_file_path = data_dir + 'imgs_id_test.npy'
+        
+    np.save(imgs_test_file_path, imgs)
+    np.save(imgs_id_test_file_path, imgs_id)
     print('Saving to .npy files done.')
 
 
 def load_test_data():
-    imgs_test = np.load('imgs_test.npy')
-    imgs_id = np.load('imgs_id_test.npy')
+    data_dir = data_dir = os.environ['DATA_DIR'] + '/'
+    imgs_test_file_name = 'imgs_test.npy'
+    imgs_id_file_name = 'imgs_id_test.npy'
+    imgs_test = np.load(imgs_test_file_path')
+    imgs_id = np.load(imgs_id_test_file_path)
     return imgs_test, imgs_id
 
 if __name__ == '__main__':
